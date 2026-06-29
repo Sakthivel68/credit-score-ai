@@ -1,0 +1,26 @@
+# Virtual Environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment variables
+.env
+
+# Database file
+database/credit_score.db
+
+# Node modules
+frontend/node_modules/
+
+# React build
+frontend/build/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
