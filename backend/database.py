@@ -7,14 +7,19 @@ import os
 # Database Configuration
 # ==============================
 
-# Get the directory where this file is located
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Use /tmp for Render (writable on free tier)
+# Use local path for development
+if os.path.exists("/tmp"):
+    # Running on Render
+    DB_PATH = "/tmp/credit_score_app.db"
+else:
+    # Running locally
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DB_PATH = os.path.join(BASE_DIR, "credit_score_app.db")
 
-# Create database file inside backend folder
-DB_PATH = os.path.join(BASE_DIR, "credit_score_app.db")
 DATABASE_URL = f"sqlite:///{DB_PATH}"
 
-print(f"Database path: {DB_PATH}")
+print(f"✅ Database path: {DB_PATH}")
 
 # Create the SQLAlchemy engine
 engine = create_engine(
