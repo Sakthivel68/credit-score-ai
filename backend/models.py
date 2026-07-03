@@ -44,4 +44,3 @@ class PredictionHistory(Base):
 
     # Link back to the application
     application     = relationship("LoanApplication", back_populates="prediction")
-    
