@@ -7,9 +7,15 @@ import os
 # Database Configuration
 # ==============================
 
-# Create database inside backend folder
+# Get the directory where this file is located
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATABASE_URL = DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'credit_score_app.db')}"
+
+# Create database file inside backend folder
+DB_PATH = os.path.join(BASE_DIR, "credit_score_app.db")
+DATABASE_URL = f"sqlite:///{DB_PATH}"
+
+print(f"Database path: {DB_PATH}")
+
 # Create the SQLAlchemy engine
 engine = create_engine(
     DATABASE_URL,
