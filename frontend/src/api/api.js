@@ -3,7 +3,7 @@ import axios from 'axios';
 // ==============================
 // Base URL — FastAPI Backend
 // ==============================
-const BASE_URL = 'http://127.0.0.1:8000';
+const BASE_URL = 'https://credit-score-aicredit-score-ai-backend.onrender.com';
 
 const api = axios.create({
   baseURL: BASE_URL,
