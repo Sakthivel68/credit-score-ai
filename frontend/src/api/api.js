@@ -20,15 +20,12 @@ export const submitLoanApplication = async (formData) => {
     const response = await api.post('/predict', formData);
     return response.data;
   } catch (error) {
-    console.error('Full error:', error);
-    console.error('Response:', error.response);
-    console.error('Message:', error.message);
     if (error.response) {
-      throw `Server error: ${error.response.status} — ${JSON.stringify(error.response.data)}`;
+      throw new Error(`Server error: ${error.response.status}`);
     } else if (error.request) {
-      throw 'Cannot reach backend. Is FastAPI running on port 8000?';
+      throw new Error('Cannot reach backend. Is FastAPI running?');
     } else {
-      throw error.message;
+      throw new Error(error.message);
     }
   }
 };
@@ -41,11 +38,10 @@ export const getPredictionHistory = async () => {
     const response = await api.get('/history');
     return response.data;
   } catch (error) {
-    console.error('History error:', error.message);
     if (error.request) {
-      throw 'Cannot reach backend. Is FastAPI running on port 8000?';
+      throw new Error('Cannot reach backend.');
     }
-    throw error.response?.data?.detail || 'Could not fetch history.';
+    throw new Error(error.response?.data?.detail || 'Could not fetch history.');
   }
 };
 
@@ -57,6 +53,6 @@ export const checkHealth = async () => {
     const response = await api.get('/health');
     return response.data;
   } catch (error) {
-    throw 'Backend is not reachable.';
+    throw new Error('Backend is not reachable.');
   }
 };
